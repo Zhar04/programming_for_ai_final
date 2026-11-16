@@ -1,0 +1,27 @@
+{
+  "rows_before": 138032,
+  "missing_pct": {
+    "start_date": 99.79,
+    "brand": 96.81,
+    "name_kk": 96.55,
+    "name_en": 95.01,
+    "website": 91.08,
+    "phone": 89.31,
+    "name_ru": 88.98,
+    "addr_housenumber": 88.78,
+    "opening_hours": 86.95,
+    "addr_street": 86.72,
+    "name": 56.28
+  },
+  "invalid_opening_hours": 106,
+  "invalid_phone": 2569,
+  "invalid_website": 23,
+  "public_building_top_region": "Алматинская",
+  "public_building_top_share": 0.7063392633425206,
+  "n_tags_iqr_high": 11.0,
+  "rows_after": 136261,
+  "memory_mb_before": 118.9,
+  "memory_mb_after": 17.5,
+  "n_service_poi": 102774,
+  "national_poi_per_100k": 501.4
+}

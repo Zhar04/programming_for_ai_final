@@ -1,0 +1,6 @@
+approach,description,median_seconds,peak_mb,peak_delta_mb,input_format,input_size_mb,result_matches_reference,speedup_vs_baseline
+pandas_csv,Baseline: pandas + CSV целиком,3.67,397.0,317.0,CSV,277.4,True,1.0
+pandas_csv_chunks,pandas + CSV по чанкам (инкрементально),3.17,174.0,93.0,CSV,277.4,True,1.2
+pandas_parquet,pandas + Parquet (нужные столбцы),0.79,436.0,355.0,Parquet,77.1,True,4.6
+polars_lazy,Polars lazy + Parquet (streaming),0.61,289.0,208.0,Parquet,77.1,True,6.0
+duckdb_sql,DuckDB SQL по Parquet,0.49,189.0,108.0,Parquet,77.1,True,7.5

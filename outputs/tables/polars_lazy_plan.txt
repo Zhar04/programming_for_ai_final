@@ -1,0 +1,11 @@
+SORT BY [col("region_iso"), col("is_building")]
+  AGGREGATE[maintain_order: false]
+    [len().alias("n_objects"), (col("name").len() - col("name").null_count()).alias("n_named"), col("n_tags").sum().alias("sum_tags"), (col("building_levels").len() - col("building_levels").null_count()).alias("n_with_levels")] BY [col("region_iso"), col("is_building")]
+    FROM
+    simple π 5/5 ["region_iso", "is_building", ... 3 other columns]
+       WITH_COLUMNS:
+       [(col("feature_key") == "building").alias("is_building")] 
+        Parquet SCAN [C:/Users/uzhar/Desktop/programming_for_ai_final/data/interim/features_by_region/region_iso=KZ-10/batch000-0.parquet, ... 139 other sources]
+        PROJECT 5/24 COLUMNS
+        SELECTION: col("region_iso") != "OUT"
+        ESTIMATED ROWS: 2738400

@@ -1,0 +1,26 @@
+column,dtype_before,dtype_after,mb_before,mb_after,saving_pct
+osm_type,object,category,154.28,2.97,98.1
+osm_id,int64,int64,23.72,23.72,0.0
+lon,float64,float32,23.72,11.86,50.0
+lat,float64,float32,23.72,11.86,50.0
+feature_value,object,category,156.27,5.94,96.2
+name,object,string,99.9,25.57,74.4
+name_kk,object,string,95.38,24.25,74.6
+name_ru,object,string,96.36,24.54,74.5
+name_en,object,string,95.1,24.18,74.6
+brand,object,category,95.03,5.94,93.7
+opening_hours,object,category,95.51,6.01,93.7
+phone,object,category,95.4,6.11,93.6
+website,object,category,95.34,6.03,93.7
+addr_city,object,category,131.91,5.96,95.5
+addr_street,object,category,209.37,6.96,96.7
+addr_housenumber,object,category,121.22,6.27,94.8
+building,object,category,153.29,5.93,96.1
+building_levels,object,category,101.63,2.97,97.1
+start_date,object,category,94.91,5.93,93.8
+n_tags,int64,int8,23.72,2.97,87.5
+version,int64,int8,23.72,2.97,87.5
+timestamp,"datetime64[ms, UTC]","datetime64[ms, UTC]",23.72,23.72,0.0
+feature_key,object,category,168.8,2.97,98.2
+region_iso,object,category,160.05,2.97,98.1
+ИТОГО,,,2362.1,248.6,89.5

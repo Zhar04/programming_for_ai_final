@@ -1,0 +1,49 @@
+{
+  "audit": {
+    "rows_total": 3109206,
+    "rows_outside_kz": 38558,
+    "exact_duplicates": 0,
+    "timestamps": {
+      "before_osm_start": 0,
+      "after_snapshot": 0,
+      "min_ts": "2008-08-30 09:11:35+00:00",
+      "max_ts": "2026-11-15 20:52:27+00:00"
+    },
+    "building_levels": {
+      "filled": 392600,
+      "not_numeric": 19,
+      "non_positive": 647,
+      "above_80": 0,
+      "iqr_low": 1.0,
+      "iqr_high": 1.0,
+      "outlier_rule": "IQR=0 → порог P99 = 9 этажей",
+      "outliers": 3390,
+      "quantiles": {
+        "p50": 1.0,
+        "p90": 2.0,
+        "p99": 9.0
+      },
+      "max": 75.0
+    },
+    "start_date": {
+      "filled": 1405,
+      "bad_format": 37,
+      "future_year": 0,
+      "examples_bad": {
+        "2022Q4": 3,
+        "05.07.2018": 2,
+        "23.12.1993": 2,
+        "1930s": 2,
+        "2024.09.24": 1,
+        "01.09.1931": 1,
+        "09.09.2017": 1,
+        "XVIII": 1
+      }
+    }
+  },
+  "aggregates": {
+    "polars_lazy_s": 0.14,
+    "pandas_chunks_s": 0.89,
+    "results_match": true
+  }
+}

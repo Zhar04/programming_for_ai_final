@@ -1,0 +1,79 @@
+cluster,size,region,dist_to_settlement_km,top_type,top_category,example_name
+606,204,Восточно-Казахстанская,3.7,chalet,tourism,Аблайкит
+280,125,Жетісу,8.6,stone,culture,Мечеть
+409,90,Кызылординская,21.5,supermarket,retail,Eleven
+172,58,Алматинская,3.6,fuel,transport,Конь
+612,39,г. Шымкент,8.2,attraction,culture,Europharma
+462,33,Павлодарская,8.2,ruins,culture,—
+145,32,Алматинская,16.2,alpine_hut,tourism,Вид сверху на каньон
+555,32,Туркестанская,10.2,archaeological_site,culture,—
+146,32,Алматинская,7.4,hotel,leisure,Жемчужина
+143,30,Алматинская,10.5,resort,leisure,Kölsay Nomads
+168,28,Алматинская,9.5,information,tourism,ForelKZ
+607,27,Восточно-Казахстанская,5.8,archaeological_site,culture,Могильник Берель
+463,24,Павлодарская,11.4,ruins,culture,—
+402,24,Кызылординская,11.0,garden,leisure,№153 мектеп
+171,23,Алматинская,33.1,ruins,culture,—
+173,21,Алматинская,6.1,hotel,leisure,Aqua Grand
+93,20,Актюбинская,9.5,convenience,retail,Средняя школа
+437,20,Павлодарская,5.3,hotel,tourism,Армянские шашлыки
+507,20,Северо-Казахстанская,3.6,ruins,culture,—
+352,19,Карагандинская,3.2,tomb,culture,Kendirbek Memorial
+349,19,Карагандинская,5.3,hotel,leisure,Мечеть Шашубай
+169,19,Алматинская,5.1,attraction,tourism,Таңбалы археологиялық ландшафтының петроглифтері
+459,18,Павлодарская,3.4,ruins,culture,—
+557,18,Туркестанская,11.8,information,tourism,Сайрамсу
+389,18,Кызылординская,29.3,museum,culture,Kantine
+180,18,Алматинская,6.9,attraction,tourism,Панорама Акбулак
+558,18,Туркестанская,14.3,attraction,tourism,Петроглиф
+460,18,Павлодарская,10.5,ruins,culture,—
+89,17,Актюбинская,9.9,school,leisure,У Нурбола
+112,17,Алматинская,3.8,pitch,leisure,Газпромнефть
+177,17,Алматинская,22.2,information,tourism,Вагончик КазСелезащиты
+419,17,Кызылординская,5.0,farm,retail,им Бегайдар Аралбаева
+285,17,Жетісу,14.4,chalet,tourism,"турбаза ""Балхаш"""
+135,17,Алматинская,7.3,picnic_site,tourism,ТАБИГАТ
+65,16,Акмолинская,8.1,hotel,tourism,iQanat Burabay high shool
+354,16,Карагандинская,9.7,archaeological_site,culture,Senkibai Batyr Mausoleum
+506,15,Северо-Казахстанская,5.2,ruins,culture,—
+127,14,Алматинская,12.8,motor,leisure,Sokol Racing Track
+316,14,Жетісу,11.3,convenience,leisure,Акимат
+287,14,Жетісу,4.9,memorial,culture,КазМунайГаз Мукры
+298,14,Жетісу,7.0,school,education,Асхана
+341,14,Карагандинская,6.9,cafe,tourism,Летнее кафе
+148,13,Алматинская,10.1,viewpoint,tourism,Коновязь
+505,13,Северо-Казахстанская,5.6,ruins,culture,—
+175,13,Алматинская,3.5,firepit,leisure,Маралсай
+397,13,Кызылординская,5.4,fitness_station,leisure,Бесарыс
+351,12,Карагандинская,19.1,bus_station,transport,АЗС ДТ
+174,12,Алматинская,22.3,firepit,leisure,Батан
+410,12,Кызылординская,3.9,sauna,leisure,Оспан Ата мешіт
+161,12,Алматинская,4.9,place_of_worship,culture,Дом культуры
+423,12,Кызылординская,90.0,wreck,culture,—
+386,12,Костанайская,14.5,ruins,culture,—
+496,12,Северо-Казахстанская,10.1,ruins,culture,—
+91,11,Актюбинская,10.8,pitch,leisure,Сапар
+490,11,Северо-Казахстанская,10.2,ruins,culture,—
+421,11,Кызылординская,4.5,convenience,leisure,№162 жалпы орта мектебі
+182,11,Алматинская,19.1,hostel,tourism,—
+170,11,Алматинская,10.6,ruins,culture,—
+178,11,Алматинская,26.1,camp_site,tourism,Қайрақ сарқырамасы
+208,11,Атырауская,6.5,hospital,leisure,Туберкулезная больница
+319,11,Жетісу,15.4,pitch,leisure,Акимат
+264,11,Жамбылская,13.3,fuel,transport,Sinooil
+251,11,Западно-Казахстанская,4.3,cafe,leisure,Корпус №1
+408,11,Кызылординская,6.7,pitch,leisure,№142 Базарбек Қашқынбаев атындағы орта мектеп
+416,11,Кызылординская,14.9,convenience,leisure,Кітапхана
+387,11,Костанайская,10.7,ruins,culture,—
+395,11,Кызылординская,14.2,artwork,culture,Ақ жол
+94,10,Актюбинская,3.1,pitch,leisure,Қыз Әулие мазары
+67,10,Акмолинская,3.9,atm,finance,Народный банк
+179,10,Алматинская,27.3,picnic_site,tourism,—
+311,10,Жетісу,19.9,community_centre,culture,Акимат
+181,10,Алматинская,29.1,information,tourism,Поляна Сновидений
+433,10,Мангистауская,19.5,atm,tourism,Ақтау-Құрық
+435,10,Мангистауская,21.3,viewpoint,tourism,"Меловые горы, вид на озеро"
+461,10,Павлодарская,6.0,ruins,culture,—
+576,10,Восточно-Казахстанская,5.6,cafe,leisure,верхнее кафе
+609,10,Восточно-Казахстанская,3.9,resort,leisure,«Малахит» демалыс орталығы
+510,9,Северо-Казахстанская,4.2,pitch,leisure,Апельсин

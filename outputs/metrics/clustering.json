@@ -1,0 +1,72 @@
+{
+  "best_eps": 2000,
+  "runs": [
+    {
+      "run_id": 1,
+      "method": "Grid baseline",
+      "params": "cell=1000 м, min_pts=10",
+      "n_clusters": 468,
+      "noise_share": 0.24105318465759817,
+      "silhouette": 0.5158126544317516,
+      "davies_bouldin": 0.15461257429767183,
+      "settlement_precision": 0.7901785714285714,
+      "settlement_recall": 0.8068181818181818,
+      "settlement_f1": 0.7984116899618804,
+      "seconds": 0.79,
+      "peak_mb": 7.5
+    },
+    {
+      "run_id": 2,
+      "method": "DBSCAN",
+      "params": "eps=2000 м, min_samples=10",
+      "n_clusters": 613,
+      "noise_share": 0.07549574795181657,
+      "silhouette": 0.6498496996108635,
+      "davies_bouldin": 0.15251990633404316,
+      "settlement_precision": 0.9100719424460432,
+      "settlement_recall": 0.8977272727272727,
+      "settlement_f1": 0.903857459413015,
+      "seconds": 3.55,
+      "peak_mb": 24.5
+    },
+    {
+      "run_id": 3,
+      "method": "HDBSCAN",
+      "params": "min_cluster_size=10, min_samples=10",
+      "n_clusters": 1827,
+      "noise_share": 0.28433261330686754,
+      "silhouette": 0.6180236545247122,
+      "davies_bouldin": 0.3881671865011551,
+      "settlement_precision": 0.5430711610486891,
+      "settlement_recall": 0.9318181818181818,
+      "settlement_f1": 0.6862122698678363,
+      "seconds": 124.82,
+      "peak_mb": 32.6
+    }
+  ],
+  "tune_regions": [
+    "KZ-10",
+    "KZ-19",
+    "KZ-31",
+    "KZ-33",
+    "KZ-39",
+    "KZ-43",
+    "KZ-55",
+    "KZ-61",
+    "KZ-62",
+    "KZ-79"
+  ],
+  "test_regions": [
+    "KZ-11",
+    "KZ-15",
+    "KZ-23",
+    "KZ-27",
+    "KZ-35",
+    "KZ-47",
+    "KZ-59",
+    "KZ-63",
+    "KZ-71",
+    "KZ-75"
+  ],
+  "far_clusters": 78
+}
