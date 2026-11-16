@@ -9,6 +9,7 @@
 """
 import json
 
+import numpy as np
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -16,6 +17,7 @@ import streamlit as st
 from src import config, database
 from src.categories import CATEGORY_NAMES_RU, SERVICE_CATEGORIES
 from src.search import nearest_pois
+from src.visualize import ESRI_TILES
 
 BLUE, ORANGE, AQUA, GRAY = "#2a78d6", "#eb6834", "#1baf7a", "#8c8b86"
 BLUE_RAMP = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]
@@ -113,27 +115,48 @@ with tab_regions:
                  .sort_values("На 100 тыс.", ascending=False), hide_index=True)
 
 # ------------------------------------------------------------------ вкладка "Карта"
-with tab_map:
+def render_map(view: pd.DataFrame, sel_cats: list[str]) -> None:
+    """Карта точек выборки. Вынесена в функцию, чтобы при пустой выборке выйти через return."""
+    if view.empty:
+        st.info("По выбранным фильтрам точек нет.")
+        return
     sample = view.sample(min(len(view), 15_000), random_state=config.RANDOM_STATE)
     st.caption(f"Показано {len(sample):,} из {len(view):,} точек (случайная выборка для скорости).")
+    # Центр и масштаб задаём явно: карта создаётся в скрытой вкладке, и автоподбор
+    # Plotly в этом случае ошибается (показывал Западную Африку вместо Казахстана)
+    center = {"lat": float(sample["lat"].median()), "lon": float(sample["lon"].median())}
+    span = max(sample["lat"].quantile(0.99) - sample["lat"].quantile(0.01),
+               (sample["lon"].quantile(0.99) - sample["lon"].quantile(0.01)) * 0.67, 0.05)
+    zoom = float(np.clip(np.log2(360 / span) - 1.3, 3, 13))
     if 0 < len(sel_cats) <= 3:
         # цвет по категории — только если категорий ≤ 3 (иначе цвета неразличимы)
         palette = dict(zip(sel_cats, [BLUE, ORANGE, AQUA]))
         fig = px.scatter_map(sample, lat="lat", lon="lon", color="category_ru",
                              color_discrete_map=palette, hover_name="name",
                              hover_data={"feature_value": True, "lat": False, "lon": False},
-                             zoom=4, height=620, map_style="carto-positron")
+                             center=center, zoom=zoom, height=620)
     else:
         fig = px.scatter_map(sample, lat="lat", lon="lon", hover_name="name",
                              hover_data={"category_ru": True, "feature_value": True,
                                          "lat": False, "lon": False},
-                             color_discrete_sequence=[BLUE], zoom=4, height=620,
-                             map_style="carto-positron")
+                             color_discrete_sequence=[BLUE], center=center, zoom=zoom,
+                             height=620)
     fig.update_traces(marker={"size": 5})
+    # Подложка Esri: стиль carto-positron теперь требует API-ключ, а тайлы OSM
+    # блокируются без Referer — растровые тайлы Esri работают без этих ограничений
+    fig.update_layout(map_style="white-bg", map_layers=[
+        {"below": "traces", "sourcetype": "raster", "source": [ESRI_TILES["gray"]],
+         "sourceattribution": "Tiles © Esri"},
+        {"below": "traces", "sourcetype": "raster", "source": [ESRI_TILES["labels"]]},
+    ], margin={"l": 0, "r": 0, "t": 0, "b": 0})
     st.plotly_chart(fig, use_container_width=True)
     st.download_button("Скачать выборку (CSV)",
                        view[["name", "category_ru", "feature_value", "region_ru", "lat", "lon"]]
                        .to_csv(index=False).encode("utf-8-sig"), "pois_filtered.csv", "text/csv")
+
+
+with tab_map:
+    render_map(view, sel_cats)
 
 # ------------------------------------------------------------------ вкладка "Города"
 with tab_cities:

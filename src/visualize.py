@@ -37,6 +37,15 @@ SURFACE, GRID = "#fcfcfb", "#e8e7e3"
 BLUE_RAMP = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]
 SEQ_CMAP = LinearSegmentedColormap.from_list("kz_blue", BLUE_RAMP)
 
+# Подложки для интерактивных карт (Esri отдаёт тайлы без ключа и без Referer)
+ESRI_BASE = "https://server.arcgisonline.com/ArcGIS/rest/services"
+ESRI_TILES = {
+    "gray": ESRI_BASE + "/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+    "labels": ESRI_BASE + "/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+    "streets": ESRI_BASE + "/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+}
+ESRI_ATTR = "Tiles &copy; Esri; данные POI &copy; OpenStreetMap contributors"
+
 
 def setup_style() -> None:
     """Общий стиль matplotlib: светлый фон, тонкая сетка, шрифт с кириллицей."""
@@ -223,7 +232,17 @@ def plot_hotspots_folium(hotspots: pd.DataFrame, city_name: str) -> str:
     Каждый кластер обведён выпуклой оболочкой, во всплывающей подсказке — размер и тип.
     """
     center = [hotspots["lat"].mean(), hotspots["lon"].mean()]
-    fmap = folium.Map(location=center, zoom_start=12, tiles="OpenStreetMap")
+    # Подложка — Esri. Почему не другие:
+    #  * tile.openstreetmap.org блокирует (403) браузерные запросы без заголовка Referer,
+    #    а у HTML, открытого как локальный файл, Referer нет;
+    #  * CARTO теперь требует API-ключ (вместо карты приходит надпись "API KEY REQUIRED").
+    fmap = folium.Map(location=center, zoom_start=12, tiles=None)
+    folium.TileLayer(tiles=ESRI_TILES["gray"], attr=ESRI_ATTR, name="Светлая (Esri)",
+                     max_zoom=16).add_to(fmap)
+    folium.TileLayer(tiles=ESRI_TILES["streets"], attr=ESRI_ATTR, name="Улицы (Esri)",
+                     max_zoom=19, show=False).add_to(fmap)
+    folium.TileLayer(tiles=ESRI_TILES["labels"], attr=ESRI_ATTR, name="Подписи",
+                     overlay=True, max_zoom=16).add_to(fmap)
     noise = hotspots[hotspots["hotspot"] < 0]
     for _, row in noise.iterrows():
         folium.CircleMarker([row["lat"], row["lon"]], radius=1.5, color=GRAY, fill=True,
@@ -242,6 +261,7 @@ def plot_hotspots_folium(hotspots: pd.DataFrame, city_name: str) -> str:
                                 fill_opacity=0.8, weight=0,
                                 tooltip=f"{row['name'] if pd.notna(row['name']) else row['feature_value']}"
                                 ).add_to(fmap)
+    folium.LayerControl(collapsed=True).add_to(fmap)   # переключатель подложек (правый верхний угол)
     path = config.FIG_DIR / f"fig05_hotspots_{city_name.lower()}.html"
     fmap.save(str(path))
     log(f"  график: {path.name} (интерактивный)")
