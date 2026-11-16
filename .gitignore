@@ -1,0 +1,23 @@
+# Окружение Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Большие данные — воспроизводятся командой `python main.py --all`
+data/raw/*.pbf
+data/raw/*.part
+data/raw/*.md5
+data/interim/
+
+# Служебные файлы Office / ОС
+~$*
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Документ с заданием курса (не публикуем в открытом репозитории)
+Темы_финальных_проектов_AI.docx

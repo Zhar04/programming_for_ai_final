@@ -1,0 +1,30 @@
+# Python 3.12 (проверено на 3.12.10, Windows 11). Установка: pip install -r requirements.txt
+# --- чтение OpenStreetMap PBF
+osmium==4.3.2
+# --- обработка данных
+pandas==3.1.1
+numpy==2.5.5
+pyarrow==26.0.1
+polars==2.1.0
+duckdb==2.0.0
+openpyxl==3.1.5
+# --- геоданные
+geopandas==1.2.0
+shapely==2.2.0
+pyproj==3.8.0
+# --- ML и статистика
+scikit-learn==1.9.1
+scipy==1.18.1
+statsmodels==0.15.0
+# --- визуализация и дашборд
+matplotlib==3.11.2
+seaborn==0.13.2
+plotly==7.1.0
+folium==1.0.0
+streamlit==1.67.0
+# --- служебное
+psutil==7.2.2
+requests==2.34.2
+# --- генерация отчёта (.docx) и презентации (.pptx) — скрипты в папке reports/
+python-docx==1.2.0
+python-pptx==1.0.2
