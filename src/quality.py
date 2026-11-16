@@ -25,7 +25,9 @@ from src import config
 from src.spatial import to_meters
 from src.utils import log
 
-SNAPSHOT_DATE = pd.Timestamp("2026-11-16", tz="UTC")  # дата выгрузки Geofabrik (+1 день запаса)
+# Верхняя граница дат — момент запуска: правка "из будущего" невозможна. Дату не зашиваем
+# в код, чтобы проверка оставалась верной и для более свежей выгрузки Geofabrik.
+SNAPSHOT_DATE = pd.Timestamp.now(tz="UTC")
 OSM_START = pd.Timestamp(config.OSM_PROJECT_START, tz="UTC")
 
 # Регулярные выражения для проверки форматов

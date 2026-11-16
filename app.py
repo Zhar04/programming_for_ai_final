@@ -100,7 +100,7 @@ with tab_regions:
         # сортировка по значению (иначе Plotly группирует столбцы по цвету)
         fig.update_yaxes(categoryorder="total ascending")
         fig.update_layout(height=560, legend={"orientation": "h", "y": -0.15})
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
     with right:
         fig = px.choropleth(data, geojson=geojson, locations="iso_code",
                             featureidkey="properties.iso_code", color="per_100k",
@@ -108,7 +108,7 @@ with tab_regions:
                             labels={"per_100k": "на 100 тыс."}, title="Карта обеспеченности")
         fig.update_geos(fitbounds="locations", visible=False)
         fig.update_layout(height=560, margin={"l": 0, "r": 0, "t": 40, "b": 0})
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
     st.dataframe(data[["region_ru", "n", "pop_total", "per_100k"]]
                  .rename(columns={"region_ru": "Регион", "n": "POI", "pop_total": "Население",
                                   "per_100k": "На 100 тыс."})
@@ -149,7 +149,7 @@ def render_map(view: pd.DataFrame, sel_cats: list[str]) -> None:
          "sourceattribution": "Tiles © Esri"},
         {"below": "traces", "sourcetype": "raster", "source": [ESRI_TILES["labels"]]},
     ], margin={"l": 0, "r": 0, "t": 0, "b": 0})
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
     st.download_button("Скачать выборку (CSV)",
                        view[["name", "category_ru", "feature_value", "region_ru", "lat", "lon"]]
                        .to_csv(index=False).encode("utf-8-sig"), "pois_filtered.csv", "text/csv")
@@ -169,7 +169,7 @@ with tab_cities:
                      labels={"population": "Население (лог.)", "poi_per_100k": "POI на 100 тыс.",
                              "city_group": "Группа"}, height=520)
     fig.update_traces(textposition="top center")
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
     st.dataframe(show[["Город", "city_group", "population", "n_service_poi", "poi_per_100k",
                        "poi_per_km2", "population_source"]].round(1), hide_index=True)
 
