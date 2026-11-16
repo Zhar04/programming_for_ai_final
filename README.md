@@ -66,8 +66,10 @@ pip install -r requirements.txt
 | `python main.py --step clustering` | один шаг конвейера (`download, extract, regions, optimize, audit, pois, database, benchmark, clustering, hypotheses, visualize`) |
 | `streamlit run app.py` | дашборд с фильтрами: регион, категория, город, год правки |
 
-Дашборд и пункты меню 12–16 работают сразу после клонирования — на данных из `data/processed/`.
-Шаги 2–11 требуют PBF-файл (скачивается шагом 1).
+Сразу после клонирования (без скачивания PBF) работают дашборд, пункты меню 12–16 и шаги
+`database`, `clustering`, `hypotheses`, `visualize` — на данных из `data/processed/`.
+Шаги `extract`, `regions`, `optimize`, `audit`, `pois`, `benchmark` обрабатывают исходный PBF:
+он скачивается шагом 1 (`download`), промежуточные данные создаются в `data/interim/`.
 
 **Google Colab:** `!git clone ...`, `%cd programming_for_ai_final`, `!pip install -r requirements.txt`,
 `!python main.py --all`.

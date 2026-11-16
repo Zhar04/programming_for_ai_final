@@ -40,8 +40,11 @@ POPULATION_SOURCE = (
 FEATURES_DIR = INTERIM_DIR / "osm_features"          # сырые объекты, Parquet с партициями по ключу
 FEATURES_REGION_DIR = INTERIM_DIR / "features_by_region"  # те же объекты + регион, партиции по региону
 FEATURES_CSV = INTERIM_DIR / "features_by_region.csv"     # CSV-копия только для бенчмарка CSV vs Parquet
-BOUNDARIES_PATH = INTERIM_DIR / "boundaries.parquet"      # полигоны регионов и городов (WKB)
-PLACES_PATH = INTERIM_DIR / "places.parquet"              # точки населённых пунктов (city/town/village)
+# Границы и населённые пункты небольшие (~3 МБ), поэтому лежат в processed и попадают в git:
+# шаги database / clustering / hypotheses / visualize работают сразу после клонирования
+BOUNDARIES_PATH = PROCESSED_DIR / "boundaries.parquet"    # полигоны регионов и городов (WKB)
+PLACES_PATH = PROCESSED_DIR / "places.parquet"            # точки населённых пунктов (city/town/village)
+K_DISTANCE_PATH = PROCESSED_DIR / "k_distance.npy"        # расстояния до 10-го соседа (выбор eps)
 
 REGIONS_GEOJSON = PROCESSED_DIR / "regions_kz.geojson"    # упрощённые границы для карт
 POIS_CLEAN_PATH = PROCESSED_DIR / "pois_clean.parquet"    # очищенные POI (основной набор анализа)

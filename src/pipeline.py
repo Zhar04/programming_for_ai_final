@@ -193,7 +193,7 @@ def step_visualize() -> list:
         dbscan_run = [r for r in clus["runs"] if r["method"] == "DBSCAN"][0]
         paths.append(visualize.plot_clusters_map(pois[pois["is_service"]], labels,
                                                  dbscan_run["run_id"], dbscan_run["params"]))
-        paths.append(visualize.plot_kdistance(np.load(config.INTERIM_DIR / "k_distance.npy"),
+        paths.append(visualize.plot_kdistance(np.load(config.K_DISTANCE_PATH),
                                               pd.read_csv(config.TABLES_DIR / "dbscan_eps_sensitivity.csv"),
                                               clus["best_eps"]))
     update_run_state("visualize", {"figures": len(paths)})

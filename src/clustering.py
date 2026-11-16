@@ -202,7 +202,7 @@ def run_clustering(pois: pd.DataFrame, regions: gpd.GeoDataFrame) -> dict:
         f"регионы для подбора eps: {sorted(tune_regions)}")
 
     kdist = k_distance(xy)
-    np.save(config.INTERIM_DIR / "k_distance.npy", kdist)
+    np.save(config.K_DISTANCE_PATH, kdist)
 
     sens = eps_sensitivity(xy, poi_regions, settlements, tune_regions)
     best_eps = int(sens.sort_values(["settlement_f1", "silhouette"], ascending=False)
